@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A L'Oréal beauty concierge for product questions, routines, and recommendations."
+    />
+    <title>L'Oréal Beauty Concierge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app-shell">
+      <!-- Left-side branding panel -->
+      <aside class="brand-panel">
+        <div>
+          <img
+            class="brand-logo"
+            src="img/loreal-logo.png"
+            alt="L'Oréal"
+          />
+
+          <p class="brand-kicker">PERSONALIZED BEAUTY SUPPORT</p>
+          <h1>Meet your L'Oréal Beauty Concierge.</h1>
+          <p class="brand-intro">
+            Explore products, compare beauty options, and build a routine based
+            on your skin, hair, and personal goals.
+          </p>
+
+          <div class="category-list" aria-label="Supported beauty categories">
+            <span>Skincare</span>
+            <span>Makeup</span>
+            <span>Haircare</span>
+            <span>Fragrance</span>
+          </div>
+        </div>
+
+        <div class="brand-note">
+          <span class="material-icons" aria-hidden="true">lock</span>
+          <p>Requests are securely sent through a Cloudflare Worker.</p>
+        </div>
+      </aside>
+
+      <!-- Right-side chatbot panel -->
+      <main class="chat-panel">
+        <header class="chat-header">
+          <div class="advisor-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <div>
+              <p class="advisor-name">L'Oréal Beauty Advisor</p>
+              <p class="advisor-state">Ready to help</p>
+            </div>
+          </div>
+
+          <button id="clearChatBtn" class="clear-button" type="button">
+            <span class="material-icons" aria-hidden="true">refresh</span>
+            <span>New chat</span>
+          </button>
+        </header>
+
+        <!-- This box always shows only the newest question. -->
+        <section id="latestQuestion" class="latest-question" hidden>
+          <p class="latest-label">Current question</p>
+          <p id="latestQuestionText"></p>
+        </section>
+
+        <!-- JavaScript adds all chat bubbles here. -->
+        <section
+          id="chatWindow"
+          class="chat-window"
+          role="log"
+          aria-live="polite"
+          aria-relevant="additions"
+          aria-label="Conversation with the L'Oréal Beauty Advisor"
+        ></section>
+
+        <section class="prompt-section" aria-labelledby="promptHeading">
+          <p id="promptHeading" class="prompt-heading">Try asking</p>
+          <div class="suggestion-grid">
+            <button class="suggestion" type="button">
+              Create a simple routine for combination skin
+            </button>
+            <button class="suggestion" type="button">
+              Which L'Oréal products can help with frizzy hair?
+            </button>
+            <button class="suggestion" type="button">
+              What is the difference between serum and moisturizer?
+            </button>
+          </div>
+        </section>
+
+        <form id="chatForm" class="chat-form">
+          <label for="userInput" class="visually-hidden">
+            Ask a L'Oréal beauty question
+          </label>
+          <input
+            id="userInput"
+            name="userInput"
+            type="text"
+            maxlength="500"
+            placeholder="Type your beauty question..."
+            autocomplete="off"
+            required
+          />
+          <button id="sendBtn" type="submit" aria-label="Send message">
+            <span class="material-icons" aria-hidden="true">arrow_upward</span>
+          </button>
+        </form>
+
+        <p class="disclaimer">
+          General beauty guidance only. This chatbot does not provide medical
+          diagnosis or treatment.
+        </p>
+      </main>
+    </div>
+
+    <footer class="page-footer">
+      <p>&copy; <span id="currentYear"></span> L'Oréal. Student project.</p>
+      <nav aria-label="Footer navigation">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </nav>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
